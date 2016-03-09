@@ -1,0 +1,37 @@
+{{#h1}}{{#titlecase}}{{doclet.kind}}{{/titlecase}}: ``{{doclet.name}}``{{/h1}}
+
+{{#doclet.memberof}}
+Member Of :doc:`{{.}}`
+{{/doclet.memberof}}
+
+.. contents:: Local Navigation
+   :local:
+
+{{#h2}}Children{{/h2}}
+
+.. toctree::
+   :maxdepth: 1
+   {{#pre}}
+   {{> toctreeChildren }}
+   {{/pre}}
+
+{{#h2}}Description{{/h2}}
+
+{{doclet.description}}
+
+
+{{#doclet.examples.length}}
+{{#h2}}Examples{{/h2}}
+
+{{/doclet.examples.length}}
+{{#doclet.examples}}
+{{#example}}{{.}}{{/example}}
+{{/doclet.examples}}
+
+{{#functions}}
+{{>func}}
+{{/functions}}
+
+{{#members}}
+{{>func}}
+{{/members}}
