@@ -19,6 +19,13 @@ Member Of :doc:`{{.}}`
 
 {{doclet.description}}
 
+{{#function}}
+{{>func}}
+{{/function}}
+
+{{#member}}
+{{>func}}
+{{/member}}
 
 {{#doclet.examples.length}}
 {{#h2}}Examples{{/h2}}
@@ -27,11 +34,3 @@ Member Of :doc:`{{.}}`
 {{#doclet.examples}}
 {{#example}}{{.}}{{/example}}
 {{/doclet.examples}}
-
-{{#functions}}
-{{>func}}
-{{/functions}}
-
-{{#members}}
-{{>func}}
-{{/members}}

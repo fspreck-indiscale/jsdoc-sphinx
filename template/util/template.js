@@ -1,7 +1,6 @@
 var _ = require('lodash');
 var helper = require('jsdoc/util/templateHelper');
 var logger = require('jsdoc/util/logger');
-var pre = require('./rst-mixin').pre;
 
 var mainDocletKinds = ['module', 'namespace', 'class'];
 var subDocletKinds = ['function', 'member', 'constant', 'attribute'];

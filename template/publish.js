@@ -29,6 +29,7 @@ function publish(taffyData, options, tutorials) {
   // README.rst must be kept as it is.
   var readme = _.find(env.opts._, /README.rst/);
   if (readme) {
+    logger.debug('Load README.rst file:', readme);
     options.readme = fs.readFileSync(readme);
   }
 
