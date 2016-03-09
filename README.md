@@ -19,7 +19,7 @@ npm install jsdoc-sphinx
 Assuming your are in your project root folder, you can then generate the documentation using:
 
 ```bash
-jsdoc -t node_modules/jsdoc-sphinx/template -r JS_SOURCE_DIR/FILE -d OUTPUT_DIR
+jsdoc -t node_modules/jsdoc-sphinx/template JS_SOURCE_DIR/FILE OUTPUT_DIR
 ```
 
 ## Reference

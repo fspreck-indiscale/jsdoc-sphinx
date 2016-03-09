@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/oliamb/jsdoc-sphinx.git"
+    "url": "git@github.com:HumanBrainProject/jsdoc-sphinx.git"
   },
   "keywords": [
     "jsdoc",
@@ -21,10 +21,10 @@
     "documentation",
     "generator"
   ],
-  "author": "Olivier Amblet <olivier@amblet.net>",
+  "author": "Olivier Amblet <olivier.amblet@epfl.ch>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/oliamb/jsdoc-sphinx/issues"
+    "url": "https://github.com/HumanBrainProject/jsdoc-sphinx/issues"
   },
   "eslintConfig": {
     "root": true,
@@ -37,20 +37,20 @@
       "semi": 2
     }
   },
-  "homepage": "https://github.com/oliamb/jsdoc-sphinx#readme",
+  "homepage": "https://github.com/HumanBrainProject/jsdoc-sphinx",
   "peerDependencies": {
     "jsdoc": "^3.3.3"
   },
   "devDependencies": {
     "eslint": "^1.9.0",
-    "jsdoc": "^3.3.3",
-    "lodash": "^3.10.1"
+    "jsdoc": "^3.3.3"
   },
   "dependencies": {
     "async": "^1.5.0",
     "deasync": "^0.1.3",
     "mkdirp": "^0.5.1",
     "mustache": "^2.2.0",
-    "sync": "^0.2.5"
+    "sync": "^0.2.5",
+    "lodash": "^3.10.1"
   }
 }
