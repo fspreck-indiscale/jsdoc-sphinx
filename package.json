@@ -1,6 +1,6 @@
 {
   "name": "jsdoc-sphinx",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A JSDoc3 template which output ReStructured Text for Sphinx Doc",
   "main": "/template/publish.js",
   "scripts": {
