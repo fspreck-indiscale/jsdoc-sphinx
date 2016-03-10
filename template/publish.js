@@ -47,7 +47,11 @@ function publish(taffyData, options, tutorials) {
   function improveFunc(doclet) {
     doclet.signature = doclet.name + '(';
     _.each(doclet.params, function(p, i) {
-      p.signature = ':param ' + p.type.names && p.type.names.join('|');
+      if (!(p && p.type && p.type.names)) {
+        logger.debug('Bad parameter', p, doclet.longname);
+        return;
+      }
+      p.signature = ':param ' + p.type && p.type.names && p.type.names.join('|');
       p.signature += ' ' + p.name;
 
       if (p.optional) {
@@ -65,6 +69,10 @@ function publish(taffyData, options, tutorials) {
     doclet.signature += ')';
 
     _.each(doclet.returns, function(r) {
+      if (!(r && r.type && r.type.names)) {
+        logger.debug('Bad return', r, doclet.longname);
+        return;
+      }
       r.signature = ':return ' + r.type && r.type.names && r.type.names.join('|');
     });
 
