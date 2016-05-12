@@ -30,7 +30,12 @@ function publish(taffyData, options, tutorials) {
   var readme = _.find(env.opts._, /README.rst/);
   if (readme && !fs.lstatSync(readme).isDirectory()) {
     logger.debug('Load README.rst file:', readme);
-    options.readme = fs.readFileSync(readme);
+   try {
+      options.readme = fs.readFileSync(readme);
+    }
+    catch (e) {
+      logger.debug('No valid README.rst file found.');
+    }
   }
 
   // define a global context that should be available by all function
