@@ -47,22 +47,6 @@ function publish(taffyData, options, tutorials) {
 
   _.each(helper.find(context.data, {kind: 'function'}), improveFunc);
   _.each(helper.find(context.data, {kind: 'member'}), improveFunc);
-  _.each(helper.find(context.data, {}), addParentRstLink);
-
-  /**
-   * Add parent RST Link
-   * @param {[type]} doclet [description]
-   */
-  function addParentRstLink(doclet) {
-    if (!doclet.memberof) {
-      return;
-    }
-    var parent;
-    parent = helper.find(context.data, {longname: doclet.memberof});
-    if (parent && parent.length > 0) {
-      doclet.parentRstLink = parent[0].rstLink;
-    }
-  }
 
   /**
    * Write the function signature for the current function doclet.
@@ -156,6 +140,18 @@ function registerLink(doclet) {
   var url = helper.createLink(doclet);
   helper.registerLink(doclet.longname, url);
   doclet.rstLink = url.substr(0, url.length - helper.fileExtension.length);
+
+  // Parent link
+  if (!doclet.memberof) {
+    return;
+  }
+  var parent;
+  parent = helper.find(context.data, {longname: doclet.memberof});
+  if (parent && parent.length > 0) {
+    doclet.parentRstLink = parent[0].rstLink;
+  }
+  // Reference code
+  doclet.rstReference = doclet.parentRstLink + '.' + doclet.name;
 }
 
 /**
