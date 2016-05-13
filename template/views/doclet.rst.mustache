@@ -4,9 +4,9 @@
 {{/doclet.rstLink}}
 {{#h1}}{{#titlecase}}{{doclet.kind}}{{/titlecase}}: ``{{doclet.name}}``{{/h1}}
 
-{{#doclet.memberof}}
-Member Of :doc:`{{.}}`
-{{/doclet.memberof}}
+{{#doclet.parentRstLink}}
+Member Of :doc:`{{doclet.parentRstLink}}`
+{{/doclet.parentRstLink}}
 
 .. contents:: Local Navigation
    :local:
