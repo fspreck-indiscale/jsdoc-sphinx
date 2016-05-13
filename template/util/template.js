@@ -2,7 +2,8 @@ var _ = require('lodash');
 var helper = require('jsdoc/util/templateHelper');
 var logger = require('jsdoc/util/logger');
 
-var mainDocletKinds = ['module', 'namespace', 'class'];
+var mainDocletKinds = ['class', 'module', 'external', 'namespace',
+  'mixin', 'interface'];
 var subDocletKinds = ['function', 'member', 'constant', 'attribute'];
 
 module.exports = {
@@ -25,9 +26,12 @@ function docletChildren(context, doclet, kinds) {
     kinds = mainDocletKinds;
   }
   var results = {};
-  var query = doclet ? {memberof: doclet.longname} : {scope: 'global'};
   _.each(kinds, function(k) {
-    results[k] = helper.find(context.data, _.extend({kind: k}, query));
+    var q = {
+      kind: k,
+      memberof: doclet ? doclet.longname : {isUndefined: true}
+    };
+    results[k] = helper.find(context.data, q);
   });
   logger.debug((doclet ? doclet.longname : '<global>'),
                'doclet children',
