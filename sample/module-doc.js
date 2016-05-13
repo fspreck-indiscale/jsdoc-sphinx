@@ -2,18 +2,10 @@
 /* eslint no-unused-vars:0 */
 
 /**
- * @module strange
- * @description Strange module right before a function
+ * @module root-module
  */
 
 /**
- * Strange function inside strange module.
+ * @module child-module
+ * @memberof module:root-module
  */
-function strange() {
-  /**
-   * A function in strange function.
-   */
-  function anotherFunction() {
-
-  }
-}

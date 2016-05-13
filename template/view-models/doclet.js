@@ -14,7 +14,9 @@ function docletModel(doclet) {
     var viewModel = _.extend({},
       util.rstMixin,
       util.docletChildren(context, doclet, util.mainDocletKinds),
-      util.docletChildren(context, doclet, util.subDocletKinds), {
+      (doclet.kind === 'module' ? {} :
+        util.docletChildren(context, doclet, util.subDocletKinds)
+      ), {
         doclet: doclet,
         example: util.example
       }
