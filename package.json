@@ -4,7 +4,7 @@
   "description": "A JSDoc3 template which output ReStructured Text for Sphinx Doc",
   "main": "/template/publish.js",
   "scripts": {
-    "test": "eslint && nodeunit"
+    "test": "eslint . && nodeunit"
   },
   "repository": {
     "type": "git",
@@ -42,7 +42,8 @@
     "jsdoc": "^3.3.3"
   },
   "devDependencies": {
-    "eslint": "^1.9.0",
+    "eslint": "^2",
+    "eslint-config-google": "^0.5.0",
     "jsdoc": "^3.3.3"
   },
   "dependencies": {

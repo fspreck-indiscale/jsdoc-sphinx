@@ -3,8 +3,14 @@ var util = require('../util');
 var logger = require('jsdoc/util/logger');
 module.exports = docletModel;
 
+/**
+ * The Mustache ViewModel to render a doclet.
+ * @param  {object} doclet the doclet to render
+ * @return {function}      the template helper func
+ */
 function docletModel(doclet) {
   return function(context, cb) {
+    logger.debug('doclet', doclet);
     var viewModel = _.extend({},
       util.rstMixin,
       util.docletChildren(context, doclet, util.mainDocletKinds),
@@ -13,7 +19,6 @@ function docletModel(doclet) {
         example: util.example
       }
     );
-    logger.debug('doclet', viewModel.doclet);
     util.view('doclet.rst', viewModel, cb);
   };
 }

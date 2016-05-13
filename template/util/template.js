@@ -12,6 +12,14 @@ module.exports = {
   subDocletKinds: subDocletKinds
 };
 
+/**
+ * Find the doclet children of a given type.
+ *
+ * @param  {object} context the jsdoc context
+ * @param  {object} doclet  the doclet to use
+ * @param  {string} kinds   the kind of children to return (function, module, ...)
+ * @return {array}          All the children doclet matching the parameters
+ */
 function docletChildren(context, doclet, kinds) {
   if (!kinds) {
     kinds = mainDocletKinds;
@@ -21,13 +29,17 @@ function docletChildren(context, doclet, kinds) {
   _.each(kinds, function(k) {
     results[k] = helper.find(context.data, _.extend({kind: k}, query));
   });
-  logger.debug((doclet ? doclet.longname: '<global>'),
+  logger.debug((doclet ? doclet.longname : '<global>'),
                'doclet children',
                'kinds:', kinds,
                'results:', results);
   return results;
 }
 
+/**
+ * Format a code example.
+ * @return {string} the example output
+ */
 function example() {
   return function(data, render) {
     var output = '.. code-block:: javascript\n';

@@ -1,3 +1,6 @@
+/* eslint require-jsdoc:0 */
+/* eslint no-unused-vars:0 */
+
 /**
  * @namespace rootNameSpace
  * @desc
@@ -40,11 +43,9 @@
  * Description of TopLevelModule
  */
 
-
 /**
  * @namespace anotherRootNamespace
  */
-
 
 function yo() {
 

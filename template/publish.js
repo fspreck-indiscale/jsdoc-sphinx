@@ -30,10 +30,9 @@ function publish(taffyData, options, tutorials) {
   var readme = _.find(env.opts._, /README.rst/);
   if (readme && !fs.lstatSync(readme).isDirectory()) {
     logger.debug('Load README.rst file:', readme);
-   try {
+    try {
       options.readme = fs.readFileSync(readme);
-    }
-    catch (e) {
+    } catch (e) {
       logger.debug('No valid README.rst file found.');
     }
   }
@@ -49,6 +48,11 @@ function publish(taffyData, options, tutorials) {
   _.each(helper.find(context.data, {kind: 'function'}), improveFunc);
   _.each(helper.find(context.data, {kind: 'member'}), improveFunc);
 
+  /**
+   * Write the function signature for the current function doclet.
+   *
+   * @param  {object} doclet function doclet
+   */
   function improveFunc(doclet) {
     doclet.signature = doclet.name + '(';
     _.each(doclet.params, function(p, i) {
@@ -56,7 +60,8 @@ function publish(taffyData, options, tutorials) {
         logger.debug('Bad parameter', p, doclet.longname);
         return;
       }
-      p.signature = ':param ' + p.type && p.type.names && p.type.names.join('|');
+      p.signature = ':param ' +
+        p.type && p.type.names && p.type.names.join('|');
       p.signature += ' ' + p.name;
 
       if (p.optional) {
@@ -78,21 +83,22 @@ function publish(taffyData, options, tutorials) {
         logger.debug('Bad return', r, doclet.longname);
         return;
       }
-      r.signature = ':return ' + r.type && r.type.names && r.type.names.join('|');
+      r.signature = ':return ' +
+        r.type && r.type.names && r.type.names.join('|');
     });
-
   }
-
 
   // build the list of page generation actions.
   var actions = [];
-  actions.push(generate(helper.getUniqueFilename('index'), require('./view-models/home')));
-  actions.push(generate('conf.py', require('./view-models/sphinx-config')));
+  actions.push(generate(
+    helper.getUniqueFilename('index'), require('./view-models/home')));
+  actions.push(generate(
+    'conf.py', require('./view-models/sphinx-config')));
   var docletModel = require('./view-models/doclet');
   context.data().each(function(doclet) {
     var url = helper.longnameToUrl[doclet.longname];
     if (url.indexOf('#') > -1) {
-        url = helper.longnameToUrl[doclet.longname].split(/#/).pop();
+      url = helper.longnameToUrl[doclet.longname].split(/#/).pop();
     }
     if (util.mainDocletKinds.indexOf(doclet.kind) !== -1) {
       actions.push(generate(url, docletModel(doclet)));
@@ -105,11 +111,18 @@ function publish(taffyData, options, tutorials) {
   })();
 }
 
+/**
+ * Return a function that will asynchronously generate the documentation
+ * and write the result.
+ * @param  {object} target    the target
+ * @param  {function} generator the generator function to use
+ * @return {function}           the function that will build this part of the documentation
+ */
 function generate(target, generator) {
   return function(cb) {
     logger.debug('generate', target);
     generator(context, handleErrorCallback(function(err, data) {
-      if(err) {
+      if (err) {
         logger.error('cannot generate ' + target);
         logger.debug(err);
         return;
@@ -119,10 +132,14 @@ function generate(target, generator) {
   };
 }
 
+/**
+ * Add a link to the link registry.
+ * @param  {object} doclet the doclet to create a link for
+ */
 function registerLink(doclet) {
-    var url = helper.createLink(doclet);
-    helper.registerLink(doclet.longname, url);
-    doclet.rstLink = url.substr(0, url.length - helper.fileExtension.length);
+  var url = helper.createLink(doclet);
+  helper.registerLink(doclet.longname, url);
+  doclet.rstLink = url.substr(0, url.length - helper.fileExtension.length);
 }
 
 /**
@@ -144,6 +161,11 @@ function write(relPath, data, cb) {
   }));
 }
 
+/**
+ * Gracefully handle errors in callback.
+ * @param  {Function} cb the callback to handle error for
+ * @return {any}         the result of cb
+ */
 function handleErrorCallback(cb) {
   return function(err) {
     if (err) {
