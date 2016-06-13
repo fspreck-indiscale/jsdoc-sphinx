@@ -7,6 +7,51 @@
  * Description of rootNameSpace
  */
 
+/**
+ * 'function', 'member', 'constant', 'attribute', 'typedef', 'type'
+ */
+
+/**
+ * someFunc description.
+ * @function
+ * @memberof rootNameSpace
+ * @name someFunc
+ * @param {string} a A parameter
+ * @return {int}     Some randome number
+ */
+
+/**
+ * Height member description.
+ * @member
+ * @memberof rootNameSpace
+ * @name {int} height
+ */
+
+/**
+ * @constant {string} ENCODING
+ * @memberof rootNameSpace
+ */
+
+/**
+ * @attribute {int} width - The current width
+ * @memberof rootNameSpace
+ */
+
+ /**
+  * @namespace childNameSpace
+  * @memberof rootNameSpace
+  */
+
+ /**
+  * @namespace secondChildNameSpace
+  * @memberof rootNameSpace
+  */
+
+ /**
+  * @module MyModule
+  * @memberof rootNameSpace
+  */
+
  /**
   * @function robustFunction
   * @memberof rootNameSpace
@@ -22,29 +67,10 @@
   * @return {int} The function result
   */
 
-  /**
-   * @namespace childNameSpace
-   * @memberof rootNameSpace
-   */
-
-  /**
-   * @namespace secondChildNameSpace
-   * @memberof rootNameSpace
-   */
-
-  /**
-   * @module MyModule
-   * @memberof rootNameSpace
-   */
-
 /**
  * @module TopLevelModule
  * @desc
  * Description of TopLevelModule
- */
-
-/**
- * @namespace anotherRootNamespace
  */
 
 function yo() {

@@ -97,8 +97,10 @@ function publish(taffyData, options, tutorials) {
   var docletModel = require('./view-models/doclet');
   context.data().each(function(doclet) {
     var url = helper.longnameToUrl[doclet.longname];
-    if (url.indexOf('#') > -1) {
+    if (url.indexOf('#') !== -1) {
+      logger.debug('URL Generator', url, doclet.longname);
       url = helper.longnameToUrl[doclet.longname].split(/#/).pop();
+      logger.debug('URL Generated', url);
     }
     if (util.mainDocletKinds.indexOf(doclet.kind) !== -1) {
       actions.push(generate(url, docletModel(doclet)));
@@ -114,7 +116,7 @@ function publish(taffyData, options, tutorials) {
 /**
  * Return a function that will asynchronously generate the documentation
  * and write the result.
- * @param  {object} target    the target
+ * @param  {object} target      the target
  * @param  {function} generator the generator function to use
  * @return {function}           the function that will build this part of the documentation
  */

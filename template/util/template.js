@@ -4,7 +4,8 @@ var logger = require('jsdoc/util/logger');
 
 var mainDocletKinds = ['class', 'module', 'external', 'namespace',
   'mixin', 'interface'];
-var subDocletKinds = ['function', 'member', 'constant', 'attribute'];
+var subDocletKinds = ['function', 'member', 'constant', 'attribute', 'typedef',
+  'type'];
 
 module.exports = {
   docletChildren: docletChildren,

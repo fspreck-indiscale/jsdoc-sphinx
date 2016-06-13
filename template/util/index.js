@@ -29,10 +29,20 @@ function view(name, model, cb) {
     }
     cb(null, mustache.render(files[0], model, {
       toctreeChildren: files[1],
-      func: files[2]
+      func: files[2],
+      member: files[3],
+      constant: files[3],
+      typedef: files[5]
     }));
   };
-  async.parallel(_.map([name, '_toctree-children', '_function'], function(p) {
+  async.parallel(_.map([
+    name,
+    '_toctree-children',
+    '_function',
+    '_member',
+    '_member',
+    '_typedef'
+  ], function(p) {
     return function(cb) {
       fs.readFile(path.join(basePath, p + '.mustache'), 'utf-8', cb);
     };
