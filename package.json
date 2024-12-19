@@ -1,14 +1,11 @@
 {
-  "name": "jsdoc-sphinx",
-  "version": "0.0.6",
+  "name": "@indiscale/jsdoc-sphinx",
+  "version": "0.0.7",
   "description": "A JSDoc3 template which output ReStructured Text for Sphinx Doc",
   "main": "/template/publish.js",
-  "scripts": {
-    "test": "eslint . && nodeunit"
-  },
   "repository": {
     "type": "git",
-    "url": "git@github.com:HumanBrainProject/jsdoc-sphinx.git"
+    "url": "git@github.com:fspreck-indiscale/jsdoc-sphinx.git"
   },
   "keywords": [
     "jsdoc",
@@ -21,10 +18,10 @@
     "documentation",
     "generator"
   ],
-  "author": "Olivier Amblet <olivier.amblet@epfl.ch>",
+  "author": "Florian Spreckelsen <f.spreckelsen@indiscale.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/HumanBrainProject/jsdoc-sphinx/issues"
+    "url": "https://github.com/fspreck-indiscale/jsdoc-sphinx/issues"
   },
   "eslintConfig": {
     "root": true,
@@ -37,7 +34,7 @@
       "semi": 2
     }
   },
-  "homepage": "https://github.com/HumanBrainProject/jsdoc-sphinx",
+  "homepage": "https://github.com/fspreck-indiscale/jsdoc-sphinx",
   "peerDependencies": {
     "jsdoc": "^4.0.0"
   },

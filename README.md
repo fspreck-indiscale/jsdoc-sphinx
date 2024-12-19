@@ -1,5 +1,11 @@
 # JSDoc Sphinx Template
 
+Forked from https://github.com/HumanBrainProject/jsdoc-sphinx to fix
+an [incompatibility with a
+dependency](https://github.com/HumanBrainProject/jsdoc-sphinx/pull/11). We
+don't plan on maintaining this any further than making it compatible
+with our documentation setup.
+
 *Generate ReStructured Text from JSDoc3 API documentation that can be further processed by Sphinx.*
 
 Use this template to generate Restructured Text from you JSDoc comments.
