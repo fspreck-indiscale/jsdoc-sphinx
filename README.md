@@ -24,7 +24,7 @@ jsdoc -t node_modules/jsdoc-sphinx/template -d OUTPUT_DIR JS_SOURCE_DIR/FILE
 
 ## Reference
 
-- http://usejsdoc.org/
+- https://jsdoc.app/
 
 ## License
 Licensed under The MIT License (MIT)
